@@ -3,8 +3,14 @@
 A Python-based software testing tool designed to analyze object-oriented code and calculate software quality metrics. The tool uses Python's Abstract Syntax Tree (AST) module to examine class definitions without executing the source code.
 
 WMC (Weighted Methods per Class): Measures the number and complexity of methods in a class.
+
+
 LCOM (Lack of Cohesion of Methods): Measures how closely related the methods of a class are.
+
+
 CBO (Coupling Between Objects): Measures dependencies between classes.
+
+
 RFC (Response for a Class): Measures the methods that may execute in response to a method call.
 
 
