@@ -14,6 +14,8 @@ RFC (Response for a Class): Measures the methods that may execute in response to
 
 
 How It Works
+
+
 The user provides a Python file or pastes class definitions.
 The tool analyzes the code using AST.
 Each metric module calculates its respective values.
