@@ -15,9 +15,8 @@ def calculate_rfc(class_node):
                     if isinstance(child.func, ast.Attribute):
                         called_methods.add(child.func.attr)
 
-                    elif isinstance(child.func, ast.Name):
-                        called_methods.add(child.func.id)
-
     response_set = defined_methods.union(called_methods)
 
     return len(response_set)
+
+#The original program use to could print() as a function, so we were having not accurate information
