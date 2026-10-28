@@ -1,21 +1,32 @@
 import ast
+
 from metrics.wmc import calculate_wmc
 from metrics.cohesion import calculate_lcom
+from metrics.coupling import calculate_cbo
 
 
 def analyze_code(source_code):
     tree = ast.parse(source_code)
 
-    for node in tree.body:
-        if isinstance(node, ast.ClassDef):
-            print(f"\nClass: {node.name}")
+    class_nodes = [
+        node for node in tree.body
+        if isinstance(node, ast.ClassDef)
+    ]
 
-            for item in node.body:
-                if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)):
-                    print(f"  Method: {item.name}")
+    class_names = {node.name for node in class_nodes}
 
-            wmc = calculate_wmc(node)
-            lcom = calculate_lcom(node)
+    for node in class_nodes:
+        print(f"\nClass: {node.name}")
 
-            print(f"  WMC: {wmc}")
-            print(f"  LCOM: {lcom}")
+        for item in node.body:
+            if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                print(f"  Method: {item.name}")
+
+        wmc = calculate_wmc(node)
+        lcom = calculate_lcom(node)
+        cbo, coupled_classes = calculate_cbo(node, class_names)
+
+        print(f"  WMC: {wmc}")
+        print(f"  LCOM: {lcom}")
+        print(f"  CBO: {cbo}")
+        print(f"  Coupled with: {', '.join(coupled_classes) if coupled_classes else 'None'}")
