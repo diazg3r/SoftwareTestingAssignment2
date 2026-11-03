@@ -1,5 +1,6 @@
 import ast
-
+#Response for Classes
+#The methods defined in a class and the distinct method names they call
 
 def calculate_rfc(class_node):
     defined_methods = set()

@@ -1,4 +1,6 @@
 import ast
+#Coupling Between Two Classes
+#How many other classes a class references
 
 
 def calculate_cbo(class_node, class_names):

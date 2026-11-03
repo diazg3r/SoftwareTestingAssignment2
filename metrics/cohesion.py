@@ -1,5 +1,8 @@
 import ast
 from itertools import combinations
+#LCOM
+#Cohesion of a Class
+#How closely related the methods are based on shared attributes
 
 
 def get_method_attributes(method_node):
